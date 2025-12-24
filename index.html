@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Suki Kimura Portfolio</title>
+    <!-- Tailwind CDN is kept for simplicity, though normally you'd install it via npm too -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            colors: {
+              bg: '#000000',
+              card: '#0a0a0a',
+              accent: '#3b82f6',
+            },
+            animation: {
+              'spin-slow': 'spin 3s linear infinite',
+              'float-particle': 'floatUp 10s ease-in infinite',
+            },
+            keyframes: {
+              floatUp: {
+                '0%': { transform: 'translateY(100px) scale(0.5)', opacity: '0' },
+                '20%': { opacity: '0.6' },
+                '100%': { transform: 'translateY(-300px) scale(0.2)', opacity: '0' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* GLOBAL RESET */
+      html {
+        width: 100%;
+        overflow-x: hidden;
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100vh;
+        background-color: #000;
+        color: #fff;
+        overflow-x: hidden;
+        position: relative;
+      }
+      
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+      }
+
+      /* RADIUS: 2.5rem (40px) */
+      .glow-container {
+        position: relative;
+        border-radius: 2.5rem;
+        background: transparent; 
+        padding: 1px; 
+        isolation: isolate;
+        height: auto; 
+      }
+
+      .glow-container::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 2.5rem;
+        padding: 1px; 
+        background: radial-gradient(
+          900px circle at var(--x, 0px) var(--y, 0px),
+          rgba(255, 255, 255, 0.4),
+          transparent 40%
+        );
+        background-attachment: fixed; 
+        -webkit-mask: 
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        z-index: 20; 
+      }
+      
+      .glow-container::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 2.5rem;
+        padding: 1px;
+        background: rgba(255, 255, 255, 0.08);
+        -webkit-mask: 
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .glow-content {
+        position: relative;
+        border-radius: 2.5rem;
+        width: 100%;
+        background-color: #050505; 
+        background-image: 
+          radial-gradient(900px at 0% 0%, rgba(255, 255, 255, 0.04), transparent 70%), 
+          radial-gradient(1200px at 100% 100%, rgba(255, 255, 255, 0.1), transparent 70%);
+        z-index: 10;
+        overflow: hidden;
+      }
+
+      /* Mouse Follow Glow */
+      .glow-content::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 2.5rem;
+        background: radial-gradient(
+          600px circle at var(--x, 0px) var(--y, 0px),
+          rgba(255, 255, 255, 0.08),
+          transparent 40%
+        );
+        background-attachment: fixed;
+        pointer-events: none;
+        z-index: 15;
+        mix-blend-mode: screen; 
+      }
+      
+      .bg-pinstripe {
+        background-image: repeating-linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.03) 0px,
+          rgba(255, 255, 255, 0.03) 1px,
+          transparent 1px,
+          transparent 6px
+        );
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/my-portfolio/assets/index-bg988P1d.js"></script>
+</head>
+  <body>
+    <div id="root"></div>
+    <!-- Point to the Entry File for Vite -->
+  </body>
+</html>
